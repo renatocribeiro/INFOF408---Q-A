@@ -5,6 +5,10 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 
+%Please write your name on the question you want to answer --before-- working on it.
+%If possible, add the references you used.
+
+
 
 \title{List of potential questions and answers for INFOF408 Calculability and Complexity (2019/2020)}
 \date{\today}
@@ -21,23 +25,36 @@
 
 \begin{enumerate}
 
-\item Explain how decision problems can be formalized by the notion of language of finite words. Develop an example of a language that formalizes a problem
+\item \textbf{Explain how decision problems can be formalized by the notion of language of finite words. Develop an example of a language that formalizes a problem}
 
-\item Define the notion of configuration of a Turing machine. Define the notion of computation of a deterministic Turing machine M on a word $w$
+\item \textbf{Define the notion of configuration of a Turing machine. Define the notion of computation of a deterministic Turing machine M on a word $w$.}
 
-\item Are nondeterministic Turing machines more powerful than deterministic Turing machines as deciders ?Justify your answer by proving that every nondeterministic Turing machine has an equivalent deterministic Turing machine
+%Renato - 25/12
+%NOT FINISHED
 
-\item Given a Turing machine $M$ and a word $w$, give the computation of $M$ on $w$. Does $M$ accept $w$ 
 
-\item Define when a Turing machine recognizes a language $L$ and when it decides a language $L$. What is the fundamental difference between those two notions ? Why do we use deciders to formalize the intuitive notion of algorithm 
+A \emph{configuration} of a TM consists of three items --- the current state, tape contents and head location. For a state $q$ and two strings $u$ and $v$ over the tape alphabet $\Gamma$ we could write a configuration $uqv$ where : $uv$ is the current content of the tape, $q$ is the current state and the head location is the first symbol of $v$.\\
 
-\item Define the notion of enumerator for a language. Prove that a language is Turing-recognizable if and only if it has an enumerator
+$1011q_701111$ represents a configuration when the tape is $101101111$, the current state is $q_7$ and the head is on the second $0$ (given by the position of $q_7$ in $1011q_701111$.)
 
-\item Define the notion of multitape Turing machine. Prove that every multitape Turing machine has an equivalent single tape Turing machine
+\emph{cf Sipser, pp. 140-141}
 
-\item What is the Church-Turing thesis ? Give a list of arguments in favor of this thesis ? Why is it not a theorem 
 
-\item Why don’t we use the notions of finite automata or context-free grammars to formalize algorithms 
+
+
+\item \textbf{Are nondeterministic Turing machines more powerful than deterministic Turing machines as deciders ?Justify your answer by proving that every nondeterministic Turing machine has an equivalent deterministic Turing machine}
+
+\item \textbf{Given a Turing machine $M$ and a word $w$, give the computation of $M$ on $w$. Does $M$ accept $w$}
+
+\item \textbf{Define when a Turing machine recognizes a language $L$ and when it decides a language $L$. What is the fundamental difference between those two notions ? Why do we use deciders to formalize the intuitive notion of algorithm}
+
+\item \textbf{Define the notion of enumerator for a language. Prove that a language is Turing-recognizable if and only if it has an enumerator}
+
+\item \textbf{Define the notion of multitape Turing machine. Prove that every multitape Turing machine has an equivalent single tape Turing machine}
+
+\item \textbf{What is the Church-Turing thesis ? Give a list of arguments in favor of this thesis ? Why is it not a theorem}
+
+\item \textbf{Why don’t we use the notions of finite automata or context-free grammars to formalize algorithms} 
 \end{enumerate}
 
 
@@ -46,17 +63,17 @@
 \section{Chapter 4: Decidability}
 
 \begin{enumerate}
-\item Why is the set of Turing machines countable 
+\item \textbf{Why is the set of Turing machines countable} 
 
-\item Prove that the set of subsets of an infinite countable set is not countable
+\item \textbf{Prove that the set of subsets of an infinite countable set is not countable}
 
-\item Prove that the language $L_0 = \{ w_i | w_i \notin L(M_i)$ is not Turing recognizable
+\item \textbf{Prove that the language $L_0 = \{ w_i | w_i \notin L(M_i)$ is not Turing recognizable}
 
-\item Prove that the language $A_{TM} = \{(M, w) | M \text{ is a TM and } M \text{ accepts } w\}$ is undecidable
+\item \textbf{Prove that the language $A_{TM} = \{(M, w) | M \text{ is a TM and } M \text{ accepts } w\}$ is undecidable}
 
-\item Explain why proving $A_TM$ undecidable establishes that R $\neq$ RE
+\item \textbf{Explain why proving $A_TM$ undecidable establishes that R $\neq$ RE}
 
-\item Prove that a language A $\in$ R iff A is Turing-recognizable and co-Turing-recognizable
+\item \textbf{Prove that a language A $\in$ R iff A is Turing-recognizable and co-Turing-recognizable}
 
 \end{enumerate}
 
@@ -64,16 +81,16 @@
 \section{Chapter 5: Reducibility}
 
 \begin{enumerate}{}
-\item Explain the technique of "the reduction" with the proof that $\text{HALT}_\text{TM} = \{(M, w) | M \text{ is a TM and } M \text{ halts on } w\}$ is undecidable
+\item \textbf{Explain the technique of "the reduction" with the proof that $\text{HALT}_\text{TM} = \{(M, w) | M \text{ is a TM and } M \text{ halts on } w\}$ is undecidable}
 
-\item Explain the technique of "the reduction" with the proof that $\text{REGULAR}_\text{TM} = \{(M) | M \text{ is a TM and } L(M) \text{ is a regular language } \}$ is undecidable
+\item \textbf{Explain the technique of "the reduction" with the proof that $\text{REGULAR}_\text{TM} = \{(M) | M \text{ is a TM and } L(M) \text{ is a regular language } \}$ is undecidable}
 
-\item Let $A_\text{LBA} = \{(B, w) | B \text{ is a linear bounded automate and } B \text{ accepts } w \}$, explain why this language is decidable
+\item \textbf{Let $A_\text{LBA} = \{(B, w) | B \text{ is a linear bounded automate and } B \text{ accepts } w \}$, explain why this language is decidable}
 
-\item State Rice’s Theorem and prove it. Give two problems that can be proved
-undecidable by applying Rice’s Theorem
+\item \textbf{State Rice’s Theorem and prove it. Give two problems that can be proved
+undecidable by applying Rice’s Theorem}
 
-\item Define the notion of "reduction function" $f : \sum^{*} \rightarrow \sum^{*}$ from a problem $A$ to a problem $B$ and prove the following theorem: "If $A \leq B$ and $B$ is decidable then $A$ is decidable" where $A \leq B$ reads "A is reducible to B"
+\item \textbf{Define the notion of "reduction function" $f : \sum^{*} \rightarrow \sum^{*}$ from a problem $A$ to a problem $B$ and prove the following theorem: "If $A \leq B$ and $B$ is decidable then $A$ is decidable" where $A \leq B$ reads "A is reducible to B"}
 
 \end{enumerate}{}
 
@@ -83,41 +100,41 @@ undecidable by applying Rice’s Theorem
 
 \begin{enumerate}{}
 
-\item Define the notion of time complexity \text{TIME}(f (n)). Explain why we can say that this is a worst-case measure of complexity ? Why do we use big $O$ notation when we reason on the time complexity of a Turing machine 
+\item \textbf{Define the notion of time complexity \text{TIME}(f (n)). Explain why we can say that this is a worst-case measure of complexity ? Why do we use big $O$ notation when we reason on the time complexity of a Turing machine}
 
-\item Define the big $O$ notation and the small $o$ notation. Give examples and explain the relation that exists between those two notions
+\item \textbf{Define the big $O$ notation and the small $o$ notation. Give examples and explain the relation that exists between those two notions}
 
-\item Why are deterministic polynomial time Turing machines suitable to study the class $P$
+\item \textbf{Why are deterministic polynomial time Turing machines suitable to study the class $P$}
 
-\item Define the running time of a Turing machine that is a decider. If $M$ is a nondeterministic machine that decides the language $L$ in $O(t(n))$, how can we bound the running time of a deterministic Turing machine that decides $L$
+\item \textbf{Define the running time of a Turing machine that is a decider. If $M$ is a nondeterministic machine that decides the language $L$ in $O(t(n))$, how can we bound the running time of a deterministic Turing machine that decides $L$}
 
-\item Define the class $P$ and explain why it is an important complexity class
+\item \textbf{Define the class $P$ and explain why it is an important complexity class}
 
-\item Given two examples of problems and their natural encodings. Suggest other encodings that are not reasonable and explain why
+\item \textbf{Given two examples of problems and their natural encodings. Suggest other encodings that are not reasonable and explain why}
 
-\item Give an example of a problem which is in NP and prove its membership NP using the notion of certificate
+\item \textbf{Give an example of a problem which is in NP and prove its membership NP using the notion of certificate}
 
-\item We have given two definitions of the class NP. One uses ”certificates” and one uses nondeterministic Turing machines. Recall the two definitions and prove that they are equivalent
+\item \textbf{We have given two definitions of the class NP. One uses ”certificates” and one uses nondeterministic Turing machines. Recall the two definitions and prove that they are equivalent}
 
-\item Explain why NP $\subseteq$ ExpTime
+\item \textbf{Explain why NP $\subseteq$ ExpTime}
 
-\item Define the notion of NP complete problem and explain why this notion is important
+\item \textbf{Define the notion of NP complete problem and explain why this notion is important}
 
-\item Define the notion of "polynomial time mapping reducible". Show that if $A$ is polynomial time reducible to $B$ and $B \in P$ then $A \in P$
+\item \textbf{Define the notion of "polynomial time mapping reducible". Show that if $A$ is polynomial time reducible to $B$ and $B \in P$ then $A \in P$}
 
-\item Prove that 3SAT is polynomial time reducible to CLIQUE
+\item \textbf{Prove that 3SAT is polynomial time reducible to CLIQUE}
 
-\item Prove the following two statements: ($i$) if $B \in$ NP-Complete and $B \in$ P, then P = NP, ($ii$) if $B \in$ NP-Complete and $B \leq_{P} C$, and $C \in$ NP then C is NP-Complete
+\item \textbf{Prove the following two statements: ($i$) if $B \in$ NP-Complete and $B \in$ P, then P = NP, ($ii$) if $B \in$ NP-Complete and $B \leq_{P} C$, and $C \in$ NP then C is NP-Complete}
 
-\item Give the main constructions and arguments underlying the proof of the Cook-Levin Theorem that establishes that SAT is NP-Complete
+\item \textbf{Give the main constructions and arguments underlying the proof of the Cook-Levin Theorem that establishes that SAT is NP-Complete}
 
-\item Prove that 3SAT $\leq_P$ VERTEX-COVER
+\item \textbf{Prove that 3SAT $\leq_P$ VERTEX-COVER}
 
-\item Define the HAMILTONIAN-PATH problem and prove it is NP-complete
+\item \textbf{Define the HAMILTONIAN-PATH problem and prove it is NP-complete}
 
-\item Give a dynamic programming algorithm for the PARTITION problem and explain why it does not imply P = NP
+\item \textbf{Give a dynamic programming algorithm for the PARTITION problem and explain why it does not imply P = NP}
 
-\item Give a dynamic programming algorithm for the SUBSET-SUM problem and explain why it does not imply P = NP
+\item \textbf{Give a dynamic programming algorithm for the SUBSET-SUM problem and explain why it does not imply P = NP}
 
 \end{enumerate}
 
@@ -125,28 +142,28 @@ undecidable by applying Rice’s Theorem
 \section{Chapter 8: Space Complexity}
 
 \begin{enumerate}{}
-\item Define the notion of space complexity. Illustrate the difference between time complexity and space complexity by showing an example of problem that can be solved in $O(t(n))$ space but we believe cannot be solved in $O(t(n))$ time
+\item \textbf{Define the notion of space complexity. Illustrate the difference between time complexity and space complexity by showing an example of problem that can be solved in $O(t(n))$ space but we believe cannot be solved in $O(t(n))$ time}
 
-\item If a language $L \in \text{SPACE}(O(t(n))$ with $t(n) \geq n$, what can we say about
+\item \textbf{If a language $L \in \text{SPACE}(O(t(n))$ with $t(n) \geq n$, what can we say about}
 the time complexity of $L$
 
-\item State and prove Savitch’s theorem
+\item \textbf{State and prove Savitch’s theorem}
 
-\item Define the classes PSPACE, NPSPACE, coPSPACE and coNPSPACE. Explain why all those classes are equal
+\item \textbf{Define the classes PSPACE, NPSPACE, coPSPACE and coNPSPACE. Explain why all those classes are equal}
 
-\item Define the notion of PSPACE-Completness and give two examples of problems that are PSPACE-Complete
+\item \textbf{Define the notion of PSPACE-Completness and give two examples of problems that are PSPACE-Complete}
 
-\item Explain why TQBF can be solved in polynomial space
+\item \textbf{Explain why TQBF can be solved in polynomial space}
 
-\item Give the main arguments and constructions underlying the proof that TQBF is PSPACE-Complete. Explain why the proof of Cook-Levin theorem cannot be applied directly to show that TQBF is PSPACE-Complete
+\item \textbf{Give the main arguments and constructions underlying the proof that TQBF is PSPACE-Complete. Explain why the proof of Cook-Levin theorem cannot be applied directly to show that TQBF is PSPACE-Complete}
 
-\item Prove that Generalized Geography is PSPACE-Complete
+\item \textbf{Prove that Generalized Geography is PSPACE-Complete}
 
-\item Define the class L and NL. In those definitions we use Turing machines with a read only input tape and read/write working tape, explain why
+\item \textbf{Define the class L and NL. In those definitions we use Turing machines with a read only input tape and read/write working tape, explain why}
 
-\item Explain why PATH is in NL, and why we believe that it is not in L
+\item \textbf{Explain why PATH is in NL, and why we believe that it is not in L}
 
-\item Explain how we can bound the time complexity of a Turing machine which decides a language in L
+\item \textbf{Explain how we can bound the time complexity of a Turing machine which decides a language in L}
 
 \end{enumerate}
 
@@ -155,13 +172,13 @@ the time complexity of $L$
 
 \begin{enumerate}{}
 
-\item Define the notion of space constructible function $f \text{ : } \mathbb{N} \rightarrow \mathbb{N}$. Give an example of such a function and explain why it is so
+\item \textbf{Define the notion of space constructible function $f \text{ : } \mathbb{N} \rightarrow \mathbb{N}$. Give an example of such a function and explain why it is so}
 
-\item Knowing that the equivalence between extended regular expressions is ExpSpace-Complete, show by applying the space hierarchy theorem that this problem can not be solved in deterministic polynomial time, nor in nondeterministic polynomial time
+\item \textbf{Knowing that the equivalence between extended regular expressions is ExpSpace-Complete, show by applying the space hierarchy theorem that this problem can not be solved in deterministic polynomial time, nor in nondeterministic polynomial time}
 
-\item Define the notion of Turing machine with oracle. Define the set of lan guages that can be solved in $\text{P}^\text{SAT}$ , define a language that belongs to this set and which is not believed to be in NP (explain why)
+\item \textbf{Define the notion of Turing machine with oracle. Define the set of lan guages that can be solved in $\text{P}^\text{SAT}$ , define a language that belongs to this set and which is not believed to be in NP (explain why)}
 
-\item What do we know about the relations between the complexity classes P, NP, PSPACE, EXPTIME, and EXPSPACE? Explain
+\item \textbf{What do we know about the relations between the complexity classes P, NP, PSPACE, EXPTIME, and EXPSPACE? Explain}
 
 
 \end{enumerate}
