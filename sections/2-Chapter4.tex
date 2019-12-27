@@ -1,0 +1,88 @@
+\documentclass[main.tex]{subfiles}
+
+\begin{document}
+The notion of \emph{countable} is used several times here, I invite you to read the book on pages 174 to 178 to understand this notion. The answers will be more readable after that
+
+\subsection{Why is the set of Turing machines countable} 
+\emph{cf Sipser, pp. 178}
+\par\textbf{PROOF} To show that the set of all Turing machines is countable we first observe that the set of all strings $\sum$* is countable, for any alphabet $\sum$. With only
+finitely many strings of each length, we may form a list of $\sum$* by writing down
+all strings of length 0, length 1, length 2, and so on.
+The set of all Turing machines is countable because each Turing machine $M$
+has an encoding into a string $<M>$. If we simply omit those strings that are not
+legal encoding of Turing machines, we can obtain a list of all Turing machines. 
+\subsection{Prove that the set of subsets of an infinite countable set is not countable}
+\todo[inline]{Maybe in page 175, maybe in the TP? }
+\subsection{Prove that the language $L_0 = \{ w_i | w_i \notin L(M_i)$ is not Turing recognizable}
+Every decidable language is Turing-recognizable.
+\begin{center}
+    \includegraphics[scale=0.45]{images/figure410.png}
+\end{center}
+\todo[inline]{Don't know... Does I refer to automaton or turing machine?}
+
+
+\subsection{Prove that the language $A_{TM} = \{(M, w) | M \text{ is a TM and } M \text{ accepts } w\}$ is undecidable} \label{subsection:atm_undec}
+\emph{cf Sipser, pp. 174}
+\par The problem of determining whether a Turing machine accepts a given input string. We call it $A_{TM}$ by analogy with $A_{DFA}$ and $A_{CFG}$. 
+\begin{align*}
+     A_{TM} = \{\langle M,w \rangle |\text{ $M$ is a TM and $M$ accepts $w$}\}.
+\end{align*}
+\par\rule{\textwidth}{0.4pt}
+\textbf{THEOREM 4.11} \textit{$A_{TM}$ is undecidable.}
+\par Before we get to the proof, let’s first observe that $A_{TM}$ is Turing-recognizable.
+Thus this theorem shows that recognizers are more powerful than deciders. Requiring a TM to halt on all inputs restricts the kinds of languages that it can recognize.
+\par The following Turing machine U recognizes $A_{TM}$. 
+\par U = “On input $\langle M, w\rangle$, where $M$ is a TM and $w$ is a string:
+\begin{enumerate}
+    \item Simulate $W$ on input $w$.
+    \item If $M$ ever enters its accept state, accept; if $M$ ever enters its
+reject state, reject."
+\end{enumerate}
+
+Note that this machine loops on input $\langle M, w \rangle$ if $M$ loops on $w$, which is why
+this machine does not decide $A_{TM}$. If the algorithm had some way to determine
+that $M$ was not halting on $w$, it could reject. Hence $A_{TM}$ is sometimes called
+the halting problem. As we demonstrate, an algorithm has no way to make this
+determination.\\
+The Turing machine U is interesting in its own right. It is an example of
+the universal Turing machine first proposed by Turing. This machine is called
+universal because it is capable of simulating any other Turing machine from the
+description of that machine. The universal Turing machine played an important
+early role in stimulating the development of stored-program computers.
+\par \textbf{THE DIAGONALIZATION METHOD} \\
+The proof of the undecidability of the halting problem uses a technique called
+diagonalization, discovered by mathematician Georg Cantor in 1873. Cantor was
+concerned with the problem of measuring the sizes of infinite sets. If we have
+two infinite sets, how can we tell whether one is larger than the other or whether
+they are of the same size? For finite sets, of course, answering these questions
+is easy. We simply count the elements in a finite set, and the resulting number
+is its size. But, if we try to count the elements of an infinite set, we will never
+finish! So we can’t use the counting method to determine the relative sizes of
+infinite sets. 
+\par For example, take the set of even integers and the set of all strings over {0,1}.
+Both sets are infinite and thus larger than any finite set, but is one of the two
+larger than the other? How can we compare their relative size?
+Cantor proposed a rather nice solution to this problem. He observed that two
+finite sets have the same size if the elements of one set can be paired with the
+elements of the other set. This method compares the sizes without resorting to
+counting. We can extend this idea to infinite sets. Let’s see what it means more
+precisely.    
+
+\begin{mytheo*}{}
+Assume that we have sets $A$ and $B$ and a function $f$ from $A$ to $B$. Say that $f$ is one-to-one if it never maps two different elements to the same place-that is, if $f(a) \neq f (b)$ whenever $a \neq b$. Say that $f$ is onto if it hits every element of B—that is, if for every $b \in B$ there is an $a \in A$ such that $f (a) = b$. Say that $A$ and $B$ are the same size if there is a one-to-one, onto function $f : A \longrightarrow B$. A function that is both one-to-one and onto is called a correspondence. In a correspondence every element of $A$ maps to a unique element of $B$ and each element of $B$ has a unique element of $A$ mapping to it. A correspondence is simply a way of pairing the elements of $A$ with the elements of B. 
+\end{mytheo*}
+
+\todo[inline]{There is a lot of page explaining theorem before atteining the ATM one, the theorem is from page 179 to page 181...}
+
+
+\subsection{Explain why proving $A_{TM}$ undecidable establishes that R $\neq$ RE}
+R and RE are already defined in question 1.5
+\begin{itemize}
+    \item R =  recursive language or \textbf{Turing-recognizable}
+    \item RE =  recursively enumerable language or \textbf{decidable}
+\end{itemize}
+So we can rephrase the question as "Why proving $A_{TM}$ undecidable establishes that Turing-recognizable $\neq$ decidable ?"
+\todo[inline]{Tired, will continue after}
+\subsection{Prove that a language A $\in$ R iff A is Turing-recognizable and co-Turing-recognizable}
+\todo[inline]{Page 181}
+\end{document}

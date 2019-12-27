@@ -1,0 +1,182 @@
+\documentclass[main.tex]{subfiles}
+
+\begin{document}
+\subsection{Explain the technique of "the reduction" with the proof that $\text{HALT}_\text{TM} = \{(M, w) | M \text{ is a TM and } M \text{ halts on } w\}$ is undecidable}
+\emph{cf Sipser, pp. 188 - 189}
+
+
+Let's consider a related
+problem, $\text{HALT}_\text{TM}$, the problem of determining whether a Turing machine halts
+(by accepting or rejecting) on a given input. We use the undecidability of $\text{A}_\text{TM}$
+to prove the undecidability of $\text{HALT}_\text{TM}$ by reducing $\text{A}_\text{TM}$ to $\text{HALT}_\text{TM}$.
+
+\par\textbf{PROOF IDEA}
+This proof is by contradiction. We assume that $\text{HALT}_\text{TM}$ is
+decidable and use that assumption to show that $\text{A}_\text{TM}$ is decidable, contradicting Theorem 4.11 (cf section \ref{subsection:atm_undec}). The key idea is to show that $\text{A}_\text{TM}$ is reducible to $\text{HALT}_\text{TM}$.
+\par Let's assume that we have a TM $R$ that decides $\text{HALT}_\text{TM}$. Then we use $R$ to
+construct $S$, a TM that decides $\text{A}_\text{TM}$. To get a feel for the way to construct $S$,
+pretend that you are S. Your task is to decide ATM. You are given an input of
+the form $(M, w)$. You must output accept if $M$ \emph{accepts} $w$, and you must output \emph{reject} if M loops or rejects on $w$. Try simulating M on $w$. If it accepts or rejects,
+do the same. But you may not be able to determine whether M is looping, and
+in that case your simulation will not terminate. That's bad, because you are a
+decider and thus never permitted to loop. So this idea, by itself, does not work.
+\par Instead, use the assumption that you have TM $R$ that decides $\text{HALT}_\text{TM}$. With
+$R$, you can test whether M halts on $w$. If $R$ indicates that M doesn't halt on $w$,
+reject because $(M, w)$ isn't in $\text{A}_\text{TM}$. However, if $R$ indicates that M does halt on
+$w$, you can do the simulation without any danger of looping.
+\par Thus, if TM $R$ exists, we can decide $\text{A}_\text{TM}$, but we know that $\text{A}_\text{TM}$ is undecidable. By virtue of this contradiction we can conclude that $R$ does not exist.
+Therefore $\text{HALT}_\text{TM}$ is undecidable.
+
+\par\textbf{PROOF}
+Let's assume for the purposes of obtaining a contradiction that TM
+$R$ decides $\text{HALT}_\text{TM}$. We construct TM $S$ to decide $\text{HALT}_\text{TM}$, with $S$ operating as follows.
+
+$S$ = "On input $(M, w)$, an encoding of a TM M and a string $w$:
+\begin{enumerate}
+    \item Run TM $R$ on input $(M, w)$.
+    \item If $R$ rejects, $reject$.
+    \item If $R$ accepts, simulate $M$ on $w$ until it halts.
+    \item If $M$ has accepted, accept; if $M$ has rejected, $reject$.
+\end{enumerate}{}
+
+Clearly, if $R$ decides $\text{HALT}_\text{TM}$, then S decides ATM. Because $\text{A}_\text{TM}$ is undecidable, $\text{HALT}_\text{TM}$ also must be undecidable.
+
+
+
+
+
+
+
+\subsection{Explain the technique of "the reduction" with the proof that $\text{REGULAR}_\text{TM} = \{(M) | M \text{ is a TM and } L(M) \text{ is a regular language } \}$ is undecidable}
+\emph{cf Sipser, pp. 191}
+
+\par\textbf{PROOF IDEA}
+As usual for undecidability theorems, this proof is by reduction
+from $\text{A}_\text{TM}$. We assume that $\text{REGULAR}_\text{TM}$ is decidable by a TM $R$ and use this assumption to construct a TM $S$ that decides $\text{A}_\text{TM}$. Less obvious now is how to use $R$'s ability to assist $S$ in its task. Nonetheless we can do so.
+\par The idea is for $S$ to take its input $(M, w)$ and modify $M$ so that the resulting $TM$ recognizes a regular language if and only if $M$ accepts $w$. We call the modified machine $M_2$ . We design $M_2$ to recognize the nonregular language
+$\{0^n1^n | n \geq 0 \}$ if $M$ does not accept $w$, and to recognize the regular language $\Sigma^*$ if $M$ accepts $w$. We must specify how $S$ can construct such an $M_2$ from $M$ and $w$. Here, $M_2$ works by automatically accepting all strings in $\{0^n1^n | n \geq 0 \}$ . In addition, if $M$ accepts $w$, $M_2$ accepts all other strings.
+
+\par\textbf{PROOF}
+We let $R$ be a TM that decides $\text{REGULAR}_\text{TM}$ decide $\text{A}_\text{TM}$. Then $S$ works in the following manner.
+
+$S$ = "On input $(M, w)$, where $M$ is a TM and $w$ is a string:
+\begin{enumerate}
+    \item Construct the following TM $M_2$.
+    \par $M_2$ = "On input $x$:
+        \begin{enumerate}
+            \item If $x$ has the form $0^n1^n$, $accept$
+            \item If $x$ does not have this form, run $M$ on input $w$ and
+$accept$ if $M$ accepts $w$."
+        \end{enumerate}{}
+    \item Run $R$ on input $(M_2)$.
+    \item If $R$ accepts, $accept$; if $R$ rejects, $reject$."
+\end{enumerate}{}
+
+
+
+
+\subsection{Let $A_\text{LBA} = \{(B, w) | B \text{ is a linear bounded automata and } B \text{ accepts } w \}$, explain why this language is decidable}
+
+\emph{cf Sipser, pp. 194 - }
+
+\par\textbf{PROOF IDEA}
+In order to decide whether LBA $M$ accepts input $w$, we simulate
+$M$ on $w$. During the course of the simulation, if $M$ halts and accepts or rejects,
+we accept or reject accordingly. The difficulty occurs if $M$ loops on $w$. We need
+to be able to detect looping so that we can halt and reject.
+\par The idea for detecting when $M$ is looping is that, as $M$ computes on $w$, it
+goes from configuration to configuration. If $M$ ever repeats a configuration it
+would go on to repeat this configuration over and over again and thus be in
+a loop. Because $M$ is an LBA, the amount of tape available to it is limited. By
+Lemma 5.8, $M$ can be in only a limited number of configurations on this amount
+of tape. Therefore only a limited amount of time is available to $M$ before it
+will enter some configuration that it has previously entered. Detecting that $M$ is
+looping is possible by simulating $M$ for the number of steps given by Lemma 5.8.
+If $M$ has not halted by then, it must be looping.
+
+\par\textbf{PROOF}
+The algorithm that decides $\text{A}_\text{LBA}$ is as follows.
+L = "On input $(M, w)$, where $M$ is an LBA and $w$ is a string:
+\begin{enumerate}
+    \item Simulate $M$ on $w$ for $qng^n$ steps or until it halts.
+    \item If $M$ has halted, $accept$ if it has accepted and $reject$ if it has
+rejected. If it has not halted, $reject$."
+\end{enumerate}{}
+
+If $M$ on $w$ has not halted within $qng^n$ steps, it must be repeating a configuration according to Lemma 5.8 and therefore looping. That is why our algorithm
+rejects in this instance.
+
+\subsection{State Rice’s Theorem and prove it. Give two problems that can be proved
+undecidable by applying Rice’s Theorem}
+
+\emph{cf Sipser, pp. 213}
+\begin{mytheo*}{}
+Let $P$ be any nontrivial property of the language of a Turing
+machine. Prove that the problem of determining whether a given Turing machine's
+language has property $P$ is undecidable.
+In more formal terms, let $P$ be a language consisting of Turing machine descriptions where $P$ fulfills two conditions. First, $P$ is nontrivial -- it contains some, but
+not all, TM descriptions. Second, $P$ is a property of the TM's language-whenever
+$L(M_1) = L(M_2)$, we have $(M_1) \in P \text{ iff } (M2) \in P$. Here, $M_1$ and $M_2$ are any TMs. Prove that $P$ is an undecidable language.
+\end{mytheo*}
+
+\emph{cf Sipser, pp. 215}
+\par\textbf{PROOF}
+Assume for the sake of contradiction that $P$ is a decidable language satisfying the
+properties and let $R_p$ be a TM that decides $P$. We show how to decide $\text{A}_\text{TM}$ using $R_p$ by constructing TM $S$. First let $T_{\o}$ be a TM that always rejects, so $L(T_{\o}) = \o$.
+You may assume that $(T_{\o}) \notin P$ without loss of generality, because you could proceed with $\bar{P}$ instead of $P$ if $(T_{\o}) \in P$. Because $P$ is not trivial, there exists a TM $T$ with $(T) \in P$. Design $S$ to decide $\text{A}_\text{TM}$ using $R_p$'s ability to distinguish between $T_{\o}$ and $T$.
+S = "On input $(M, w)$:
+\begin{enumerate}
+    \item Use $M$ and $w$ to construct the following TM $M_w$.
+    \par $M_w$, = "On input $x$:
+        \begin{enumerate}
+            \item Simulate $M$ on $w$. If it halts and rejects, $reject$.
+            \par If it accepts, proceed to stage 2
+            \item Simulate $T$ on $x$. If it accepts, $accept$."
+        \end{enumerate}{}
+    \item Use TM $R_p$ to determine whether $(M_w) \in P$. If YES, $accept$.
+    \par If NO, $reject$."
+\end{enumerate}{}
+
+TM $M_w$ simulates $T$ if $M$ accepts $w$. Hence $L(M_w)$ equals $L(T)$ if $M$ $accepts$ $w$ and $\o$ otherwise. Therefore $(M, w) \in P \text{ iff } M \text{ accepts } w$.
+
+
+\subsection{Define the notion of "reduction function" $f : \Sigma^{*} \rightarrow \Sigma^{*}$ from a problem $A$ to a problem $B$ and prove the following theorem: "If $A \leq B$ and $B$ is decidable then $A$ is decidable" where $A \leq B$ reads "A is reducible to B"}
+
+\emph{cf Slides ch5}
+\begin{mytheo*}{}
+A function $f:\Sigma^* \rightarrow \Sigma^*$ is a reduction from problem $A \subseteq \Sigma*$ to problem $B \subseteq \Sigma*$ if the following conditions hold:
+\begin{enumerate}
+    \item $f$ is a computable function, i.e. there is an algorithm (termination is guaranteed) that given a finite word $w$, it computes the finite word $f(w)$.
+
+    \item $w \in A \text{ iff } f(w) \in B$, this ensures that positive instances of the problem $A$ are translated into positive instances of the problem $B$, and negative instances of the problem $A$ are translated into negative instances of the problem $B$.
+\end{enumerate}{}
+Clearly, if there exists a reduction from $A$ to $B$ and $B$ is decidable then $A$ must be
+decidable.
+Conversely, if there exists a reduction from $A$ to $B$ and $A$ is undecidable then $B$
+must be undecidable.
+\end{mytheo*}
+
+\emph{NB: When a language $A$ is mapping reducible to $B$, we note it $A \leq_m B$.}
+
+\textbf{THEOREM} \textit{If $A \leq_m B$ and $B$ is decidable then $A$ is decidable.}
+\par\textbf{PROOF}
+We let $M$ be the decider for $B$ and $f$ be the reduction from $A$ to $B$.
+We describe a decider N for $A$ as follows.
+N="on input $w$:
+\begin{enumerate}
+    \item Compute $f(w)$.
+    \item Run $M$ on input $f(w)$ and output whatever $M$ outputs.”
+\end{enumerate}{}
+
+Clearly, if $w \in A \text{ iff } f(w) \in B$ because $f$ is a reduction from $A$ to $B$. Then M accepts $f(w) \text{ iff } w \in A$. So N decides $A$.
+
+
+\textbf{Corollary} \textit{If $A \leq_m B$ and $A$ is undecidable then $B$ is undecidable.}
+
+Also:
+
+\textbf{THEOREM} \textit{If $A \leq_m B$ and $B$ is Turing recognizable then $A$ is Turing recognizable.}
+
+\textbf{Corollary} \textit{If $A \leq_m B$ and $A$ is not Turing recognizable then $B$ is not Turing recognizable.}
+
+\end{document}
